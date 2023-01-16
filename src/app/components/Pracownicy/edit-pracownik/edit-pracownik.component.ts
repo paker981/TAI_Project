@@ -17,7 +17,9 @@ pracownikDane : pracownik ={
   imie: '',
   email: '',
   numer: 0,
-  firma: '' 
+  firma: '' ,
+  plec:'',
+  haslo:''
 
 };
 

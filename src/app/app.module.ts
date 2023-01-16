@@ -9,6 +9,7 @@ import { AddPracownikComponent } from './components/Pracownicy/add-pracownik/add
 import { FormsModule } from '@angular/forms';
 import { EditPracownikComponent } from './components/Pracownicy/edit-pracownik/edit-pracownik.component';
 import { DeletePracownikComponent } from './components/Pracownicy/delete-pracownik/delete-pracownik.component';
+import { RegisterComponent } from './components/register/register.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { DeletePracownikComponent } from './components/Pracownicy/delete-pracown
     PracownicyListaComponent,
     AddPracownikComponent,
     EditPracownikComponent,
-    DeletePracownikComponent
+    DeletePracownikComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

@@ -14,7 +14,9 @@ addPracownikRequest: pracownik ={
   imie: '',
   email: '',
   numer: 0,
-  firma: '' 
+  firma: '',
+  plec: '',
+  haslo: ''
 }
 constructor(private pracownikService : PracownicyService, private router: Router){
 

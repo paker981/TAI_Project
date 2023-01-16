@@ -8,6 +8,7 @@
     <th>email</th>
     <th>numer</th>
     <th>firma</th>
+    <th>plec</th>
     <th></th>
     <th></th>
 </tr>
@@ -19,6 +20,7 @@
       <td>{{pracownik.email}}</td>
       <td>{{pracownik.numer}}</td>
       <td>{{pracownik.firma}}</td>
+      <td>{{pracownik.plec}}</td>
       <td><a [routerLink]="['/Pracownicy','edit',pracownik.id]">View</a></td>
       <td><a [routerLink]="['/Pracownicy','delete',pracownik.id]">Delete</a></td>
     </tr>

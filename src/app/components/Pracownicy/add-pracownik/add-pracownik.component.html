@@ -5,20 +5,33 @@
         <div class="col-6">
             <form #form="ngForm" (ngSubmit)="addPracownik()">
                 <div class="mb-3">
-                  <label for="" class="form-label"><b>Imie</b></label>
+                  <label for="" class="form-label"><b>Imie:</b></label>
                   <input type="text" class="form-control" id="imie" name="imie" [(ngModel)]="addPracownikRequest.imie">
                 </div>
                 <div class="mb-3">
-                    <label for="" class="form-label"><b>Email</b></label>
-                    <input type="email" class="form-control" id="emial" name="email" [(ngModel)]="addPracownikRequest.email">
+                    <label for="" class="form-label"><b>Email:</b></label>
+                    <input type="email" class="form-control" id="email" name="email" [(ngModel)]="addPracownikRequest.email">
                 </div>
                 <div class="mb-3">
-                    <label for="numer" class="form-label"><b>Numer</b></label>
+                    <label for="numer" class="form-label"><b>Numer:</b></label>
                     <input type="number" class="form-control" id="numer" name="numer" [(ngModel)]="addPracownikRequest.numer">
                 </div>
                 <div class="mb-3">
-                    <label for="" class="form-label"><b>Firma</b></label>
+                    <label for="" class="form-label"><b>Firma:</b></label>
                     <input type="text" class="form-control" id="firma" name="firma" [(ngModel)]="addPracownikRequest.firma">
+                </div>
+                <div class="mb-3">
+                    <fieldset data-role="controlgroup">
+                        <legend><b>Choose your gender:</b></legend>
+                          <label for="male">Meżczyzna</label>
+                          <input [(ngModel)]="addPracownikRequest.plec" type="radio" name="plec" value="Meżczyzna">
+                          <label for="female">Kobieta</label>
+                          <input [(ngModel)]="addPracownikRequest.plec" type="radio" name="plec" value="Kobieta">
+                    </fieldset>
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label"><b>Hasło:</b></label>
+                    <input type="text" class="form-control" id="firma" name="firma" [(ngModel)]="addPracownikRequest.haslo">
                 </div>
                 <button type="submit" class="btn btn-primary">Dodaj!</button>
               </form>

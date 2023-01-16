@@ -16,7 +16,9 @@ export class DeletePracownikComponent {
     imie: '',
     email: '',
     numer: 0,
-    firma: '' 
+    firma: '', 
+    plec:'',
+    haslo:''
   };
 
   constructor(private route: ActivatedRoute ,private pracownikService: PracownicyService, private router: Router)  {}

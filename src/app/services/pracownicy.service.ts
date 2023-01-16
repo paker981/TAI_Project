@@ -26,7 +26,6 @@ export class PracownicyService {
   updatePracownik(id:string, updatePracownikRequest : pracownik) :Observable<pracownik> {
     return this.http.put<pracownik>(this.baseApiUrl + '/api/Pracownicy/' + id, updatePracownikRequest);
   }
-
   deletePracownik(id: string) :Observable<pracownik> {
   return this.http.delete<pracownik>(this.baseApiUrl + '/api/Pracownicy/' + id);
 
