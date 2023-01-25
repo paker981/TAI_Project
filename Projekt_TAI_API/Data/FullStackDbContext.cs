@@ -8,6 +8,7 @@ namespace Projekt_TAI_API.Data
         public FullStackDbContext(DbContextOptions options) : base(options)
         {
         }
+        public DbSet<uzytkownik> Uzytkownicy { get; set; }
 
         public DbSet<pracownik> Pracownicy { get; set; }
     }

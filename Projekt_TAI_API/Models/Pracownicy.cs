@@ -12,5 +12,9 @@
 
         public string firma { get; set; }
 
+        public string haslo { get; set; }
+
+        public string plec { get; set; }
+
     }
 }

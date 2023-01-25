@@ -5,8 +5,10 @@ using Projekt_TAI_API.Models;
 
 namespace Projekt_TAI_API.Controllers
 {
+
     [ApiController]
     [Route("api/[controller]")]
+
     public class PracownicyController : Controller
     {
         private readonly FullStackDbContext _fullStackDbContext;
@@ -36,6 +38,9 @@ namespace Projekt_TAI_API.Controllers
             return Ok(pracownikrequest);
 
         }
+
+       
+
         [HttpGet]
         [Route("{id:Guid}")]
              
