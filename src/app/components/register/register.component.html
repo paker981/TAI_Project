@@ -1,1 +1,85 @@
+<div class="outer">
+  <div class="container">
+      <div class="row">
+           <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3">
+              <div class="panel border bg-white">
+                  <div class="panel-heading">
+                      <h3 class="pt-3 font-weight-bold">Rejestracja</h3>
+                  </div>
+                  <div class="panel-body p-3">
+            <form [formGroup]="registrationForm">
+              <div class="form-group pt-3">
+                <div class="input-field" [class.error]="registrationForm.controls['imie'].dirty && registrationForm.hasError('required','imie')">
+                  <input type="text" class="form-control" formControlName="imie" placeholder="Imię" required>
+                </div>
+                  <small *ngIf="registrationForm.controls['imie'].dirty && registrationForm.hasError('required','imie')" class="text-danger" >Imie is Required</small> 
+                </div>
+                <div class="form-group pt-3">
+                    
+                  <div class="input-field" [class.error]="registrationForm.controls['email'].dirty && registrationForm.hasError('required','email')">
+                    <span class="fa-solid fa-envelope"></span>
+                    <input type="text" class="form-control"  formControlName="email" placeholder="example@example.com" required />
+                    </div>
+                    
+                    <small *ngIf="registrationForm.controls['email'].dirty && registrationForm.hasError('required','email')" class="text-danger">Email is Required</small> 
+                </div>
+                    <div class="form-group pt-3">
+                      <div class="input-field" [class.error]="registrationForm.controls['numer'].dirty && registrationForm.hasError('required','numer')">  
+                    <input type="number" class="form-control"  formControlName="numer" placeholder="Numer" required>
+                    </div>
+                    <small *ngIf="registrationForm.controls['numer'].dirty && registrationForm.hasError('required','numer')"  class="text-danger">Numer is Required</small> 
+                </div>
+                <div class="form-group pt-3">
+                  <div class="input-field" [class.error]="registrationForm.controls['firma'].dirty && registrationForm.hasError('required','firma')"> 
+                    <input type="text" class="form-control"  formControlName="firma" placeholder="Firma" required>
+                    </div>
+                    <small *ngIf="registrationForm.controls['firma'].dirty && registrationForm.hasError('required','firma')"  class="text-danger">Firma is Required</small> 
+                </div>
+            
+            <div class="form-group pt-3">
+                    <fieldset data-role="controlgroup">
+                        <br>
+                        <div class="input-field">
+                        <i class="fa regular fa-venus-mars"></i></div>
+                        <br>
+                          <label for="male">Meżczyzna&nbsp;&nbsp;</label>
+                          <input  formControlName="plec" type="radio" name="plec" value="Meżczyzna">
+                          <label for="female">&nbsp;Kobieta&nbsp;</label>
+                          <input  formControlName="plec" type="radio" name="plec" value="Kobieta">
+                    </fieldset>
+              </div>
+                <div class="form-group pt-3">
+                    <div class="input-field" [class.error]="registrationForm.controls['haslo'].dirty && registrationForm.hasError('required','haslo')"> 
+                    <input [type]="fieldTextType ? 'text' : 'password'" class="form-control" id="firma" name="firma" formControlName="haslo" placeholder="Hasło" required>
+                      <span (click)="toogleFieldTextType()" class="fa {{eyeIcon}}"></span>
+                    </div>
+                    <small *ngIf="registrationForm.controls['haslo'].dirty && registrationForm.hasError('required','haslo')" class="text-danger"> Haslo is Required</small> 
+                  </div>
+              
+                  <div class="form-group pt-3">
+                    <div class="input-field" [class.error]="registrationForm.controls['haslo'].dirty && registrationForm.hasError('required','haslo')">
+                    <input type="password" class="form-control" placeholder="Powtórz hasło" required>
+                    </div>
+                  <small *ngIf="registrationForm.controls['haslo'].dirty && registrationForm.hasError('required','haslo')" class="text-danger">Repeat your password</small> 
+                </div>
+            
+           
+                  
+      
+                 <div class="row g-0">
+                    <div class="col text-center p-2 mb-3">
+                <button (click)="onSingIn()" type="submit" class="col text-center p-2 mb-3  btn btn-primary">Zarejestruj </button>
+                <div class="text-center pt-4 text-muted">Masz już konto?
+                  <a id="forget" routerLink="/login">Zaloguj się!</a>
+                  </div>
+                 </div>
+                 </div>
+    
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+    
 

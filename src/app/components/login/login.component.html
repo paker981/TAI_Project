@@ -1,0 +1,42 @@
+<div class="outer">
+    <div class="container">
+        <div class="row">
+             <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3">
+                <div class="panel border bg-white">
+                    <div class="panel-heading">
+                        <h3 class="pt-3 font-weight-bold">Login</h3>
+                    </div>
+                    <div class="panel-body p-3">
+                        <form [formGroup]="loginForm" > 
+                        <div class="form-group pt-3">
+                            <div class="input-field" [class.error]="loginForm.controls['email'].dirty && loginForm.hasError('required','email')">
+                                <span class="fa fa-user p-2"></span>
+                                    <input type="text" class="form-control" formControlName="email" placeholder="example@example.com" required>  
+                            </div>
+                            <small *ngIf="loginForm.controls['email'].dirty && loginForm.hasError('required','email')" class="text-danger">Email is Required</small> 
+                        </div>
+                        <div class="form-group pt-3">
+                            <div class="input-field" [class.error]="loginForm.controls['haslo'].dirty && loginForm.hasError('required','haslo')">
+                                <span class="fa fa-lock p-2"></span>
+                                    <input [type]="type" class="form-control" formControlName="haslo" placeholder="Password" required> 
+                                    <span (click)="toogleFieldTextType()" class="fa {{eyeIcon}}"></span>
+                            </div>
+                            <small *ngIf="loginForm.controls['haslo'].dirty && loginForm.hasError('required','haslo')" class="text-danger">Password is Required</small> 
+                        </div>
+                        <div class="form-inline fr mt-4">
+                            <a id="forget" class="font-weight-bold">Zapomniales hasla?</a>
+                        </div>
+                        
+                        <button (click)="onLogin()" type="submit" class="col text-center p-2 mb-3  btn btn-primary">Login</button>
+                        <div class="text-center pt-4 text-muted">Nie masz konta?
+                            <a id="forget" routerLink="/register">Zarejestruj się!</a>
+                        </div>
+                        </form>
+                    </div>
+
+
+                </div>    
+            </div>
+        </div>
+    </div>    
+</div>

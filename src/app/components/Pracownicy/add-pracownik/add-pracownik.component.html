@@ -1,42 +1,60 @@
 <div class="container my-5">
-    <h1 class="mb-3">Dodaj nowego pracownika</h1>
-    
+    <form class="border border-dark">
+<div class="row g-0">
+<div class="col text-center p-2 mb-3 bg-light">
+    <span class="fs-3">Rejestracja</span>
+</div>
+</div>
+
     <div class="row">
-        <div class="col-6">
+        <div class="col">
             <form #form="ngForm" (ngSubmit)="addPracownik()">
-                <div class="mb-3">
+            <div class="row">
+                <div class="col">
                   <label for="" class="form-label"><b>Imie:</b></label>
                   <input type="text" class="form-control" id="imie" name="imie" [(ngModel)]="addPracownikRequest.imie">
                 </div>
-                <div class="mb-3">
+                <div class="col">
                     <label for="" class="form-label"><b>Email:</b></label>
                     <input type="email" class="form-control" id="email" name="email" [(ngModel)]="addPracownikRequest.email">
                 </div>
-                <div class="mb-3">
+            </div>
+                 <div class="row">
+                <div class="col">
                     <label for="numer" class="form-label"><b>Numer:</b></label>
                     <input type="number" class="form-control" id="numer" name="numer" [(ngModel)]="addPracownikRequest.numer">
                 </div>
-                <div class="mb-3">
+                <div class="col">
                     <label for="" class="form-label"><b>Firma:</b></label>
                     <input type="text" class="form-control" id="firma" name="firma" [(ngModel)]="addPracownikRequest.firma">
                 </div>
-                <div class="mb-3">
+            </div>
+            <div class="row">
+                <div class="col">
                     <fieldset data-role="controlgroup">
-                        <legend><b>Choose your gender:</b></legend>
-                          <label for="male">Meżczyzna</label>
+                        <br>
+                        <label for="" class="form-label"><b>Płeć:</b></label>
+                        <br>
+                          <label for="male">Meżczyzna&nbsp;&nbsp;</label>
                           <input [(ngModel)]="addPracownikRequest.plec" type="radio" name="plec" value="Meżczyzna">
                           <label for="female">Kobieta</label>
                           <input [(ngModel)]="addPracownikRequest.plec" type="radio" name="plec" value="Kobieta">
                     </fieldset>
                 </div>
-                <div class="mb-3">
+                <div class="col">
                     <label for="" class="form-label"><b>Hasło:</b></label>
                     <input type="text" class="form-control" id="firma" name="firma" [(ngModel)]="addPracownikRequest.haslo">
                 </div>
-                <button type="submit" class="btn btn-primary">Dodaj!</button>
-              </form>
+            </div>
+                
+                 <br>
+                 <div class="row g-0">
+                    <div class="col text-center p-2 mb-3">
+                <button type="submit" class="col text-center p-2 mb-3  btn btn-primary">Zarejestruj!</button>
+                 </div>
+                 </div>
+                </form>
+            </div>
         </div>
-    </div>
-    
-
+    </form>    
 </div>

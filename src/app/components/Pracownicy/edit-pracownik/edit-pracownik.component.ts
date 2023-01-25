@@ -26,9 +26,6 @@ pracownikDane : pracownik ={
 constructor(private route: ActivatedRoute ,private pracownikService: PracownicyService, private router: Router)  {}
 
 
-
-
-
  ngOnInit(): void {
 this.route.paramMap.subscribe ({
 next: (params) => {
