@@ -54,3 +54,10 @@ C:\Users\micha\Desktop\SEMESTR 7\TAI\Projekt_TAI_API\Projekt_TAI_API\Projekt_TAI
 C:\Users\micha\Desktop\SEMESTR 7\TAI\Projekt_TAI_API\Projekt_TAI_API\Projekt_TAI_API\obj\Debug\net6.0\ref\Projekt_TAI_API.dll
 C:\Users\micha\Desktop\SEMESTR 7\TAI\Projekt_TAI_API\Projekt_TAI_API\Projekt_TAI_API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.Design.dll
 C:\Users\micha\Desktop\SEMESTR 7\TAI\Projekt_TAI_API\Projekt_TAI_API\Projekt_TAI_API\bin\Debug\net6.0\Npgsql.EntityFrameworkCore.PostgreSQL.Design.dll
+C:\Users\micha\Desktop\SEMESTR 7\TAI\Projekt_TAI_API\Projekt_TAI_API\Projekt_TAI_API\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\micha\Desktop\SEMESTR 7\TAI\Projekt_TAI_API\Projekt_TAI_API\Projekt_TAI_API\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\micha\Desktop\SEMESTR 7\TAI\Projekt_TAI_API\Projekt_TAI_API\Projekt_TAI_API\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\micha\Desktop\SEMESTR 7\TAI\Projekt_TAI_API\Projekt_TAI_API\Projekt_TAI_API\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\micha\Desktop\SEMESTR 7\TAI\Projekt_TAI_API\Projekt_TAI_API\Projekt_TAI_API\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\micha\Desktop\SEMESTR 7\TAI\Projekt_TAI_API\Projekt_TAI_API\Projekt_TAI_API\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\micha\Desktop\SEMESTR 7\TAI\Projekt_TAI_API\Projekt_TAI_API\Projekt_TAI_API\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
