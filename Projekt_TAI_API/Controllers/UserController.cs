@@ -2,12 +2,18 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.IdentityModel.Tokens;
 using Projekt_TAI_API.Data;
 using Projekt_TAI_API.Helpers;
 using Projekt_TAI_API.Models;
+using Projekt_TAI_API.Models.Dto;
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.Data;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -67,12 +73,19 @@ namespace Projekt_TAI_API.Controllers
                 return BadRequest(new { Message = "Haslo jest nieprawidłowe!" });
             }
 
-            user.token = CreateJwt(user);
 
-            return Ok(new
+            user.token = CreateJwt(user);
+            var newAccessToken = user.token;
+            var newRefreshToken = CreateRefreshToken();
+            user.refreshToken = newRefreshToken;
+            user.refreshTokenExpiryTime = DateTime.Now.AddDays(5);
+            await _fullStackDbContext.SaveChangesAsync();
+
+
+            return Ok(new TokenApiDto()
             {
-                Token = user.token,
-                Message = "Login Success!"
+                AccessToken = newAccessToken,
+                RefreshToken = newRefreshToken
             }); ;
         }
         
@@ -103,7 +116,7 @@ namespace Projekt_TAI_API.Controllers
             var identity = new ClaimsIdentity(new Claim[]
             {
                 new Claim(ClaimTypes.Role, user.role),
-                new Claim(ClaimTypes.Name, $"{user.imie} {user.numer}")
+                new Claim(ClaimTypes.Name, user.imie)
             });
             var credentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256);
 
@@ -137,11 +150,70 @@ namespace Projekt_TAI_API.Controllers
 
         }
 
+        private string CreateRefreshToken()
+        {
+            var tokenByte = RandomNumberGenerator.GetBytes(64);
+            var refreshToken = Convert.ToBase64String(tokenByte);
+
+            var tokenInUser = _fullStackDbContext.Uzytkownicy.Any(x => x.refreshToken == refreshToken);
+
+            if (tokenInUser) { return CreateRefreshToken(); }
+            return refreshToken;
+        }
+
+        private ClaimsPrincipal GetPrincipleFromExpierdToken( string token)
+        {
+            var key = Encoding.ASCII.GetBytes("veryverysecret.....");
+            var tokenValidateParameters = new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(key),
+                ValidateAudience = false,
+                ValidateIssuer = false,
+                ValidateLifetime = false
+            };
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            SecurityToken securityToken;
+            var principal = tokenHandler.ValidateToken(token,tokenValidateParameters, out securityToken);
+            var jwtSecurityToken = securityToken as JwtSecurityToken;
+            if (jwtSecurityToken == null || jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256,StringComparison.InvariantCultureIgnoreCase)) {
+                throw new SecurityTokenException("This is Invalid Token");
+            }
+            return principal;
+
+        }
+
         [Authorize]
         [HttpGet]
         public async Task<ActionResult<uzytkownik>> GetAllUsers()
         {
             return Ok(await _fullStackDbContext.Uzytkownicy.ToListAsync());
+        }
+
+        [HttpPost("refresh")]
+        public async Task<IActionResult> Refresh(TokenApiDto tokenApiDto)
+        {
+            if (tokenApiDto is null)
+                return BadRequest("Błąd przy generowaniu tokenu!");
+            string accessToken = tokenApiDto.AccessToken;
+            string refreshToken = tokenApiDto.RefreshToken;
+            var principal = GetPrincipleFromExpierdToken(accessToken);
+            var name = principal.Identity.Name;
+            var user = await _fullStackDbContext.Uzytkownicy.FirstOrDefaultAsync(x => x.imie == name);
+            if (user is null || user.refreshToken != refreshToken || user.refreshTokenExpiryTime <= DateTime.Now)
+                return BadRequest("Nieprawidłowe żądanie!");
+            var newAccessToken = CreateJwt(user);
+            var newRefreshToken = CreateRefreshToken();
+            user.refreshToken = newRefreshToken;
+            await _fullStackDbContext.SaveChangesAsync();
+            return Ok(new TokenApiDto()
+            {
+                AccessToken = newAccessToken,
+                RefreshToken = newRefreshToken
+            }); 
+
+          
         }
 
     }

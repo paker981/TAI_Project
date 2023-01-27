@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Projekt_TAI_API.Data;
@@ -11,9 +12,11 @@ using Projekt_TAI_API.Data;
 namespace ProjektTAIAPI.Migrations
 {
     [DbContext(typeof(FullStackDbContext))]
-    partial class FullStackDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230127125207_refreshtoken")]
+    partial class refreshtoken
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -57,6 +60,9 @@ namespace ProjektTAIAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<DateTime>("RefreshTokenExpiryTill")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("email")
                         .HasColumnType("text");
 
@@ -77,9 +83,6 @@ namespace ProjektTAIAPI.Migrations
 
                     b.Property<string>("refreshToken")
                         .HasColumnType("text");
-
-                    b.Property<DateTime>("refreshTokenExpiryTime")
-                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("role")
                         .HasColumnType("text");

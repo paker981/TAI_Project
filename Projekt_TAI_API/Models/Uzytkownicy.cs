@@ -20,5 +20,9 @@
 
             public string role { get; set; }
 
+            public string refreshToken { get; set; }
+
+            public DateTime refreshTokenExpiryTime { get; set; }
+
     }
 }
