@@ -8,13 +8,13 @@ import {
 } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
-import { NgToastService } from 'ng-angular-popup';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
 
-  constructor(private auth: AuthService, private toast: NgToastService, private router: Router) {}
+  constructor(private auth: AuthService, private toastr: ToastrService, private router: Router) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const myToken = this.auth.getToken();
@@ -29,7 +29,7 @@ export class TokenInterceptor implements HttpInterceptor {
       catchError((err:any)=>{
       if(err instanceof HttpErrorResponse){
         if(err.status == 401){
-          this.toast.warning({detail:"Warning", summary:"Token się przedawnił, Zaloguj się ponownie!"});
+          this.toastr.warning("Token się przedawnił, Zaloguj się ponownie!");
           this.router.navigate(['login'])
         }
       }

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import ValidateForm from 'src/app/helpers/validateform';
 import { AuthService } from 'src/app/services/auth.service';
+import { UserStoreService } from 'src/app/services/user-store.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,7 @@ export class LoginComponent {
   loginForm!: FormGroup;
   
   
-  constructor(private toastr: ToastrService, private fb: FormBuilder, private auth: AuthService, private router: Router) { }
+  constructor(private toastr: ToastrService, private fb: FormBuilder, private auth: AuthService, private router: Router, private userStore: UserStoreService) { }
 
   ngOnInit() :void {
     this.loginForm = this.fb.group({
@@ -42,11 +43,15 @@ export class LoginComponent {
       .subscribe({
         next:(res)=>{
           this.loginForm.reset();
-          this.toastr.success('Zalogowano!');
+          this.auth.storeToken(res.accessToken);
+          const tokenPayLoad = this.auth.decodedToken();
+          this.userStore.setNameForStore(tokenPayLoad.name);
+          this.userStore.setRoleForStore(tokenPayLoad.role);
+          this.toastr.success("Zalogowano!");
           this.router.navigate(['dashboard']);
         },
         error:(err)=>{
-          this.toastr.error(err.error.message);
+          this.toastr.error("Hasło jest nieprawidłowe!");
         }
       })
       
