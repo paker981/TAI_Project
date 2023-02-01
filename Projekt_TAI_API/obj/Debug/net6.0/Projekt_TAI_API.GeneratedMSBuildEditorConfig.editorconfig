@@ -15,3 +15,27 @@ build_property.SupportLocalizedComponentNames =
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
 build_property.MSBuildProjectDirectory = C:\Users\micha\Desktop\SEMESTR 7\TAI\Projekt_TAI_API\Projekt_TAI_API\Projekt_TAI_API
 build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/micha/Desktop/SEMESTR 7/TAI/Projekt_TAI_API/Projekt_TAI_API/Projekt_TAI_API/Views/cars/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcY2Fyc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/micha/Desktop/SEMESTR 7/TAI/Projekt_TAI_API/Projekt_TAI_API/Projekt_TAI_API/Views/cars/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcY2Fyc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/micha/Desktop/SEMESTR 7/TAI/Projekt_TAI_API/Projekt_TAI_API/Projekt_TAI_API/Views/cars/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcY2Fyc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/micha/Desktop/SEMESTR 7/TAI/Projekt_TAI_API/Projekt_TAI_API/Projekt_TAI_API/Views/cars/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcY2Fyc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/micha/Desktop/SEMESTR 7/TAI/Projekt_TAI_API/Projekt_TAI_API/Projekt_TAI_API/Views/cars/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcY2Fyc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/micha/Desktop/SEMESTR 7/TAI/Projekt_TAI_API/Projekt_TAI_API/Projekt_TAI_API/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 

@@ -19,6 +19,8 @@ using System.Text.RegularExpressions;
 
 namespace Projekt_TAI_API.Controllers
 {
+
+
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
@@ -41,7 +43,7 @@ namespace Projekt_TAI_API.Controllers
             var pass = CheckPasswordStrength(uzytkownikrequest.haslo);
 
             if (!string.IsNullOrEmpty(pass))
-                return BadRequest(new { Message = pass.ToString() });
+                return BadRequest(new {Message = pass.ToString() });
     
             uzytkownikrequest.id = Guid.NewGuid();
             uzytkownikrequest.haslo = PasswordHashed.HashPassword(uzytkownikrequest.haslo);
@@ -62,8 +64,8 @@ namespace Projekt_TAI_API.Controllers
             if(userObj == null)
                 return BadRequest();
 
-
             var user = await _fullStackDbContext.Uzytkownicy.FirstOrDefaultAsync(x => x.email == userObj.email);
+
             if(user==null)
                 return NotFound(new 
                 {Message= "User Not Found!"});
@@ -102,8 +104,7 @@ namespace Projekt_TAI_API.Controllers
                      sb.Append("Minimalna dlługość hasło powinna wynosić 6 znaków" + Environment.NewLine);    
             if(!(Regex.IsMatch(password,"[a-z]") && Regex.IsMatch(password,"[A-Z]") && Regex.IsMatch(password,"[0-9]")))  
                      sb.Append("Hasło powinno być zawierać tylko znaki Alfanumeryczne" + Environment.NewLine);
-            
-            if (!Regex.IsMatch(password,"[<,>,;,.,!,@,',[,`,~]"))
+            if (!Regex.IsMatch(password,"[<,>,;,.,!,@,']"))
                     sb.Append("Hasło powinno zawierać znak specjalny"+Environment.NewLine);
 
             return sb.ToString();
@@ -116,7 +117,8 @@ namespace Projekt_TAI_API.Controllers
             var identity = new ClaimsIdentity(new Claim[]
             {
                 new Claim(ClaimTypes.Role, user.role),
-                new Claim(ClaimTypes.Name, user.imie)
+                new Claim(ClaimTypes.Name, user.imie),
+                new Claim(ClaimTypes.Email, user.email)
             });
             var credentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256);
 
@@ -142,11 +144,11 @@ namespace Projekt_TAI_API.Controllers
 
             if (uzytkownik == null)
             {
-                return Ok();
+                return NotFound();
 
             }
 
-            return NotFound();
+            return Ok(uzytkownik);
 
         }
 
@@ -191,6 +193,7 @@ namespace Projekt_TAI_API.Controllers
             return Ok(await _fullStackDbContext.Uzytkownicy.ToListAsync());
         }
 
+
         [HttpPost("refresh")]
         public async Task<IActionResult> Refresh(TokenApiDto tokenApiDto)
         {
@@ -215,6 +218,65 @@ namespace Projekt_TAI_API.Controllers
 
           
         }
+
+        [HttpPut]
+        [Route("{id:Guid}")]
+        public async Task<IActionResult> Update([FromRoute] Guid id, uzytkownik updateUzytkownik)
+        {
+
+            var uzytkownik = await _fullStackDbContext.Uzytkownicy.FindAsync(id);
+            if (uzytkownik == null)
+            {
+                return NotFound();
+            }
+            uzytkownik.imie = updateUzytkownik.imie;
+            uzytkownik.email = updateUzytkownik.email;
+            uzytkownik.numer = updateUzytkownik.numer;
+            uzytkownik.firma = updateUzytkownik.firma;
+            uzytkownik.role  = updateUzytkownik.role;
+
+
+            await _fullStackDbContext.SaveChangesAsync();
+            return Ok(uzytkownik);
+        }
+
+        [HttpPut]
+        [Route("{email}")]
+        public async Task<IActionResult> UpdateByEmail([FromRoute] string email, uzytkownik updateUzytkownik)
+        {
+
+            var uzytkownik = await _fullStackDbContext.Uzytkownicy.FindAsync(email);
+            if (uzytkownik == null)
+            {
+                return NotFound();
+            }
+            uzytkownik.imie = updateUzytkownik.imie;
+            uzytkownik.email = updateUzytkownik.email;
+            uzytkownik.numer = updateUzytkownik.numer;
+            uzytkownik.firma = updateUzytkownik.firma;
+            uzytkownik.role = updateUzytkownik.role;
+
+
+            await _fullStackDbContext.SaveChangesAsync();
+            return Ok(uzytkownik);
+        }
+
+        [HttpDelete]
+        [Route("{id:Guid}")]
+        public async Task<IActionResult> Delete([FromRoute] Guid id)
+        {
+            var uzytkownik = await _fullStackDbContext.Uzytkownicy.FindAsync(id);
+            if (uzytkownik == null)
+            {
+                return NotFound();
+            }
+            _fullStackDbContext.Uzytkownicy.Remove(uzytkownik);
+            await _fullStackDbContext.SaveChangesAsync();
+            return Ok();
+        }
+
+
+
 
     }
 }

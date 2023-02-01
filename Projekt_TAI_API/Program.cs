@@ -29,6 +29,7 @@ builder.Services.AddDbContext<FullStackDbContext>(options =>
 options.UseNpgsql(builder.Configuration.GetConnectionString("FullStackConnectionString"))
 );
 
+
 builder.Services.AddAuthentication(x =>
 {
     x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

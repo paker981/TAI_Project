@@ -22,6 +22,63 @@ namespace ProjektTAIAPI.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("Projekt_TAI_API.Models.car", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
+
+                    b.Property<string>("category")
+                        .HasColumnType("text");
+
+                    b.Property<string>("description")
+                        .HasColumnType("text");
+
+                    b.Property<string>("imgage")
+                        .HasColumnType("text");
+
+                    b.Property<long>("price")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("title")
+                        .HasColumnType("text");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Cars");
+                });
+
+            modelBuilder.Entity("Projekt_TAI_API.Models.order", b =>
+                {
+                    b.Property<Guid>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("date")
+                        .HasColumnType("text");
+
+                    b.Property<string>("email")
+                        .HasColumnType("text");
+
+                    b.Property<string>("paid")
+                        .HasColumnType("text");
+
+                    b.Property<long>("price")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("quantity")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("status")
+                        .HasColumnType("text");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Orders");
+                });
+
             modelBuilder.Entity("Projekt_TAI_API.Models.pracownik", b =>
                 {
                     b.Property<Guid>("id")

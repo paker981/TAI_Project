@@ -11,5 +11,9 @@ namespace Projekt_TAI_API.Data
         public DbSet<uzytkownik> Uzytkownicy { get; set; }
 
         public DbSet<pracownik> Pracownicy { get; set; }
+
+        public DbSet<car> Cars { get; set; }   
+
+        public DbSet<order> Orders { get; set; }
     }
 }
