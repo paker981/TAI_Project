@@ -1,0 +1,58 @@
+<ng-container *ngIf="cars.length !=0">
+    <div class="container">
+        <div class="card-table">
+            <div class="cart-product">
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Sr.No</th>
+                            <th>Nazwa</th>
+                            <th>Podgląd</th>
+                            <th>Opis</th>
+                            <th>Cena</th>
+                            <th>Ilość dni</th>
+                            <th>Suma</th>
+                            <th>Usuń</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let car of cars; let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{car.title}}</td>
+                            <td><img style="width: 120px;" src="{{car.imgage}}" alt=""></td>
+                            <td style="width: 25%;">{{car.description}}</td>
+                            <th style="width: 12%;">{{car.price}}</th>
+                            <td style="width: 12%;">{{car.quantity}}</td>
+                            <td style="width: 12%;">{{car.total}}.00</td>
+                            <td>
+                                <button (click)="removeItem(car)" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"></td>
+                            <td><button (click)="emptycart()" class="btn btn-danger">Wyczyść</button></td>
+                            <td><button routerLink="/cars" class="btn btn-primary">Wróć</button></td>
+                            <td><button class="btn btn-success" (click)="payCart()">Opłać</button></td>
+                            <td><strong>Suma zamówienia: {{grandTotal}}.00 zł</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+
+<ng-container *ngIf="cars.length == 0">
+    <div class="container">
+        <div class="card">
+            <h5 class="card-title">Mój koszyk</h5>
+        </div>
+        <div class="center">
+            <img src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90" alt="">
+            <h4>Twoj koszyk jest pusty!</h4>
+            <h6>Dodaj samochody, które chciałbyś wypożyczyć</h6>
+            <button routerLink="/cars" class="btn btn-primary">Wypożycz teraz</button>
+        </div>
+    </div>
+</ng-container>

@@ -1,0 +1,53 @@
+<div class="card-top container fluid">
+    <div class="container d-flex">
+        <div class="item">
+            <a (click)="filter('')">
+                <img style="margin-bottom: 0px;" src="https://e7.pngegg.com/pngimages/720/603/png-clipart-cars-hand-painted-material-car.png" alt="">
+                <h6><b>Wszystkie</b></h6>
+            </a>
+        </div>
+        <div class="item">
+            <a (click)="filter('Sportowe')">
+            <img style="margin-top: 10px; width: 100px; margin-bottom: 2px;" src="https://www.pngfind.com/pngs/m/178-1785780_bmw-png-image-bmw-4-series-m-performance.png" alt="">
+            <h6><b>Sportowe</b></h6>
+            </a>
+        </div>
+        <div class="item">
+            <a (click)="filter('Elektryczne')">
+            <img style="width:62px; margin-top: 6px;" src="https://crdms.images.consumerreports.org/c_lfill,w_470,q_auto,f_auto/prod/cars/cr/car-versions/21725-2021-tesla-model-s-long-range" alt="">
+            <h6><b>Elektryczne</b></h6>
+            </a>
+        </div>
+        <div  class="item">
+            <a (click)="filter('Crossover')">
+            <img style="margin-top: px; width:80px; margin-bottom: -9px;"  src="https://image.similarpng.com/very-thumbnail/2020/05/White-premium-car-crossover-SUV-transparent-PNG.png" alt="">
+            <h6><b>Crossover</b></h6>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <ng-container *ngFor="let car of carList of filterCategory | filter:searchKey:'title'">
+            <div class="card col-md-3">
+                <img src="{{car.imgage}}" alt="">
+                <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{car.title}}</h5>
+                <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{car.description}}</p>
+                <p><strong>Cena: </strong>{{car.price}}.00 zł/dzień</p>
+                <form [formGroup]="iloscForm"> 
+                    <label for="cars">Wybierz ilość dni:</label>
+                    <select class="form-control" formControlName="ilosc">
+                      <option [ngValue]=1>1</option>
+                      <option [ngValue]=2>2</option>
+                      <option [ngValue]=3>3</option>
+                      <option [ngValue]=4>4</option>
+                    </select>
+                    <button class="btn btn-primary" (click)="addtocart(car)">Dodaj do koszyka!</button>
+                </form>
+                
+            </div>
+        </ng-container>
+    </div>
+</div>

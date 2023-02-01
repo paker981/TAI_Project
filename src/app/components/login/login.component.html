@@ -23,9 +23,7 @@
                             </div>
                             <small *ngIf="loginForm.controls['haslo'].dirty && loginForm.hasError('required','haslo')" class="text-danger">Password is Required</small> 
                         </div>
-                        <div class="form-inline fr mt-4">
-                            <a id="forget" class="font-weight-bold">Zapomniales hasla?</a>
-                        </div>
+
                         
                         <button (click)="onLogin()" type="submit" class="col text-center p-2 mb-3  btn btn-primary">Login</button>
                         <div class="text-center pt-4 text-muted">Nie masz konta?

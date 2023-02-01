@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="card-table">
+        <div class="cart-product">
+            <table class="table table-responsive">
+                <thead>
+                    <tr>
+                        <th>Sr.No</th>
+                        <th>Nazwa</th>
+                        <th>Podgląd</th>
+                        <th>Cena</th>
+                        <th>Ilość dni</th>
+                        <th>Suma</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let car of cars; let i = index">
+                        <td>{{i+1}}</td>
+                        <td>{{car.title}}</td>
+                        <td><img style="width: 60px;" src="{{car.imgage}}" alt=""></td>
+                        <th style="width: 10%;">{{car.price}}.00</th>
+                        <td style="width: 10%;">{{car.quantity}}</td>
+                        <td style="width: 10%;">{{car.total}}.00</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"></td>
+                        <td><button routerLink="/cars" class="btn btn-primary">Wróć</button></td>
+                        <td><strong>Suma zamówienia: {{grandTotal}}.00 zł</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div #paypal></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,95 @@
+
+<button style ="margin-top: 20px; margin-right: 10 px;" routerLink="/dashboard" class="btn btn-success">Wróć do dashboardu</button>
+
+
+<div class="container my-5">
+    <h1 class="mb-3">Samochody</h1>
+    <button style ="margin-left:1200px;" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Dodaj samochód</button>
+  <table class="table mt-3" *ngIf="cars && cars.length > 0" >
+       <thead>
+
+<ng-container *ngIf="cars.length !=0">
+    <div class="container">
+        <div class="card-table">
+            <div class="cart-product">
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Sr.No</th>
+                            <th>Nazwa</th>
+                            <th>Podgląd</th>
+                            <th>Opis</th>
+                            <th>Cena</th>
+                            <th>Kategoria</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let car of cars; let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{car.title}}</td>
+                            <td><img style="width: 120px;" src="{{car.imgage}}" alt=""></td>
+                            <td style="width: 25%;">{{car.description}}</td>
+                            <th style="width: 12%;">{{car.price}}.00/dzień</th>
+                            <td style="width: 12%;">{{car.category}}</td>
+                            <td>
+                                <td><button (click)="deleteCar(car)" class="btn btn-danger">Usuń</button></td>
+                                <td><button (click)="onEdit(car)" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Edytuj</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edytuj użytkownika</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+       <div class="modal-body">
+          <form [formGroup]="formValue">
+            <div class="mb-3">
+            <label for="" class="form-label"><b>ID</b></label>
+            <input type="text" class="form-control" formControlName="id" >
+             </div>
+            <div class="mb-3">
+                <label for="" class="form-label"><b>Nazwa</b></label>
+                <input type="text" class="form-control" formControlName="title">
+              </div>
+            <div class="mb-3">
+                <label for="" class="form-label"><b>Cena</b></label>
+                <input type="email" class="form-control" formControlName="price">
+              </div>
+            <div class="mb-3">
+                <label for="numer" class="form-label"><b>Opis</b></label>
+                <input type="text" class="form-control" formControlName="description">
+              </div>
+            <div class="mb-3">
+               <label for="" class="form-label"><b>Kategoria</b></label>
+               <select class="form-control" formControlName="category">
+                <option value="Crossover">Crossover</option>
+                <option value="Elektryczne">Elektryczne</option>
+                <option value="Sportowe">Sportowe</option>
+              </select>
+              </div>
+                <div class="mb-3">
+                  <label for="" class="form-label"><b>Obraz</b></label>
+                  <input type="text" class="form-control" formControlName="imgage">
+                 </div>
+            </form>
+        <div class="modal-footer">
+          <button type="button" id="close" class="btn btn-secondary" data-bs-dismiss="modal">Zamknij</button>
+          <button (click)="updateCar()" type="button" class="btn btn-primary">Zapisz zmiany</button>
+          <button (click)="addCar()" type="button" class="btn btn-primary">Dodaj samochód</button>
+        </div>
+      </div>
+    </div>
+  </div>

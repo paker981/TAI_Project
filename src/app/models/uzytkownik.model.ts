@@ -8,4 +8,6 @@ export interface uzytkownik{
     haslo: string;
     token: string;
     role: string;
+    accessToken: string;
+    refreshToken :string;
     }

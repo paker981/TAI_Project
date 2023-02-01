@@ -1,0 +1,31 @@
+
+<button style ="margin-top: 20px; margin-right: 10 px;" routerLink="/dashboard" class="btn btn-success">Wróć do dashboardu</button>
+
+
+<div class="container my-5">
+    <h1 class="mb-3">Zamówienia</h1>
+  <table class="table mt-3" *ngIf="orders && orders.length > 0" >
+       <thead>
+  <tr>
+      <th scope="col">Numer zamówienia</th>
+      <th scope="col">Data</th>
+      <th scope="col">Ilość samochodów</th>
+      <th scope="col">Płatność</th>
+      <th scope="col">Status</th>
+      <th scope="col">Wartość</th>
+  </tr>
+  </thead>
+    <tbody>
+      <tr *ngFor="let order of orders">
+        <td>{{order.id}}</td>
+        <td>{{order.date}}</td>
+        <td>{{order.quantity}}</td>
+        <td>{{order.paid}}</td>
+        <td>{{order.status}}</td>
+        <td>{{order.price}}.00zł</td>
+      </tr>
+  
+    </tbody>
+  </table>
+    <p *ngIf="!orders || orders.length <= 0">Brak zamówień!</p>
+</div>

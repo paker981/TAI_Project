@@ -1,57 +1,45 @@
-<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">Hello, <h3>{{name}}</h3></a>
-    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="navbar-nav">
-        <div class="nav-item text-nowrap">
-            <a class="nav-link px-3 cursor-pointer" (click)="logOut()">Wyloguj!</a>
-        </div>
-    </div>
-</header>
-    
 
-<ng-container *ngIf="role == 'User'">
+<div class="sidebar">     
 <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px">
   <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
     <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-    <span class="fs-4">Sidebar</span>
+    <span class="fs-4">Hello, {{name}}</span>
   </a>
   <hr>
+  
   <ul class="nav nav-pills flex-column mb-auto">
+    <ng-container *ngIf="role == 'Admin'">
     <li class="nav-item">
-      <a href="#" class="nav-link active" aria-current="page">
-        <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
-        Home
-      </a>
+      <a class="nav-link text-white" aria-current="page" routerLink="edit-cars">
+        <svg class="bi me-2" width="16" height="16">
+          </svg>Samochody
+    
+        </a>
     </li>
+  </ng-container>
+    <ng-container *ngIf="role == 'Admin'">
     <li>
-      <a href="#" class="nav-link text-white">
-        <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-        Dashboard
-      </a>
+      <a  class="nav-link text-white" aria-current="page" routerLink="list">
+        <svg class="bi me-2" width="16" height="16"></svg>
+        Lista użytkowników
+        </a>
     </li>
+   </ng-container>
     <li>
-      <a href="#" class="nav-link text-white">
+      <a  class="nav-link text-white" aria-current="page" routerLink="orders">
         <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
-        Orders
+        Zamowienia
       </a>
     </li>
     <li>
-      <a href="#" class="nav-link text-white">
-        <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
-        Products
-      </a>
-    </li>
-    <li>
-      <a href="#" class="nav-link text-white">
+      <a href="#" class="nav-link text-white" routerLink="/pays">
         <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
-        Customers
+        Płatności
       </a>
     </li>
     <li>
       <a class="nav text-white">
-        <svg class="bi me-2" width="16" height="440"><use></use></svg>
+        <svg class="bi me-2" width="16" height="550"><use></use></svg>
       </a>
     </li>
 
@@ -60,18 +48,109 @@
   <div class="dropdown">
     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
       <img src="https://cdn-icons-png.flaticon.com/512/1946/1946429.png" alt="" width="30" height="30" class="rounded-circle me-2">
-      <strong>mdo</strong>
+      <strong>{{email}}({{role}})</strong>
     </a>
     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-      <li><a class="dropdown-item" href="#">New project...</a></li>
-      <li><a class="dropdown-item" href="#">Settings</a></li>
-      <li><a class="dropdown-item" href="#">Profile</a></li>
+      <li><a class="dropdown-item" href="#" (onclick)="onEdit(user)" data-bs-toggle="modal" data-bs-target="#exampleModal">Profil</a></li>
       <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" (click)="logOut()">Sign out</a></li>
+      <li><button class="dropdown-item" (click)="logOut()">Wyloguj</button></li>
     </ul>
+    
+  </div>
+  
+</div>
+</div>  
+
+   <div class="body-text">
+    <div class="container my-5">
+      <h2 class="mb-3">Ostatnie zamówienia:</h2>
+    <table class="table mt-3" *ngIf="orders && orders.length > 0" >
+         <thead>
+    <tr>
+        <th scope="col">Numer zamówienia</th>
+        <th scope="col">Data</th>
+        <th scope="col">Ilość samochodów</th>
+        <th scope="col">Płatność</th>
+        <th scope="col">Status</th>
+        <th scope="col">Wartość</th>
+    </tr>
+    </thead>
+      <tbody>
+        <tr *ngFor="let order of orders.slice(0,1)">
+          <td>{{order.id}}</td>
+          <td>{{order.date}}</td>
+          <td>{{order.quantity}}</td>
+          <td>{{order.paid}}</td>
+          <td>{{order.status}}</td>
+          <td>{{order.price}}.00zł</td>
+        </tr>
+        <p>...</p>
+    <span style="cursor:pointer" routerLink="orders">Zobacz więcej!</span>
+      </tbody>
+    </table>
+      <p *ngIf="!orders || orders.length <= 0">Brak zamówień!</p>
+    </div>
+
+<br>
+    <div class="container my-5">
+    <h2 class="mb-3">Masz jakieś pytania?</h2>
+    <p>Napisz do nas na maila, lub skontakutj się z nami telefonicznie.</p>
+    <p>Wszystkie dane masz podane w karcie Kontakt</p>
+    <p>Możesz też sprawdzić nasz Q&A z najcześciej zadawanymi pytaniami!</p>
+  </div>
+  </div>
+ 
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edytuj użytkownika</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+     <div class="modal-body">
+        <form [formGroup]="formValue">
+          <div class="mb-3">
+          <label for="" class="form-label"><b>ID</b></label>
+          <input type="text" class="form-control" formControlName="id" readonly="true" >
+           </div>
+          <div class="mb-3">
+              <label for="" class="form-label"><b>Imie</b></label>
+              <input type="text" class="form-control" formControlName="imie">
+            </div>
+          <div class="mb-3">
+              <label for="" class="form-label"><b>Email</b></label>
+              <input type="email" class="form-control" formControlName="email">
+            </div>
+          <div class="mb-3">
+              <label for="numer" class="form-label"><b>Numer</b></label>
+              <input type="number" class="form-control" formControlName="numer">
+            </div>
+          <div class="mb-3">
+             <label for="" class="form-label"><b>Firma</b></label>
+              <input type="text" class="form-control" formControlName="firma">
+            </div>
+              <div class="mb-3">
+                <label for="" class="form-label"><b>Uprawnienia</b></label>
+                <select class="form-control" formControlName="role">
+                  <option value="User">User</option>
+                  <option value="Admin">Admin</option>
+                </select>
+               </div>
+          </form>
+      <div class="modal-footer">
+        <button type="button" id="close" class="btn btn-secondary" data-bs-dismiss="modal">Zamknij</button>
+        <button (click)="updateUser()" type="button" class="btn btn-primary">Zapisz zmiany</button>
+      </div>
+    </div>
   </div>
 </div>
-</ng-container>
+
 
 
 

@@ -56,15 +56,8 @@
                     <small *ngIf="registrationForm.controls['haslo'].dirty && registrationForm.hasError('required','haslo')" class="text-danger"> Haslo is Required</small> 
                   </div>
               
-                  <div class="form-group pt-3">
-                    <div class="input-field" [class.error]="registrationForm.controls['haslo'].dirty && registrationForm.hasError('required','haslo')">
-                    <input type="password" class="form-control" placeholder="Powtórz hasło" required>
-                    </div>
-                  <small *ngIf="registrationForm.controls['haslo'].dirty && registrationForm.hasError('required','haslo')" class="text-danger">Repeat your password</small> 
-                </div>
-            
-           
                   
+          
       
                  <div class="row g-0">
                     <div class="col text-center p-2 mb-3">
@@ -81,5 +74,5 @@
     </div>
 </div>
 </div>
-    
+
 

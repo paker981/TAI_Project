@@ -1,6 +1,7 @@
+import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import ValidateForm from 'src/app/helpers/validateform';
 import { AuthService } from 'src/app/services/auth.service';
@@ -20,7 +21,7 @@ export class LoginComponent {
   loginForm!: FormGroup;
   
   
-  constructor(private toastr: ToastrService, private fb: FormBuilder, private auth: AuthService, private router: Router, private userStore: UserStoreService) { }
+  constructor(private route: ActivatedRoute,private _location : Location,private toastr: ToastrService, private fb: FormBuilder, private auth: AuthService, private router: Router, private userStore: UserStoreService) { }
 
   ngOnInit() :void {
     this.loginForm = this.fb.group({
@@ -44,11 +45,15 @@ export class LoginComponent {
         next:(res)=>{
           this.loginForm.reset();
           this.auth.storeToken(res.accessToken);
+          this.auth.storeRefreshToken(res.refreshToken);
           const tokenPayLoad = this.auth.decodedToken();
           this.userStore.setNameForStore(tokenPayLoad.name);
           this.userStore.setRoleForStore(tokenPayLoad.role);
           this.toastr.success("Zalogowano!");
-          this.router.navigate(['dashboard']);
+          this.auth.setAuthorize();
+          const returnUrl = this.route.snapshot.queryParams['returnUrl'] || 'dashboard';
+          this.router.navigateByUrl(returnUrl);
+          
         },
         error:(err)=>{
           this.toastr.error("Hasło jest nieprawidłowe!");

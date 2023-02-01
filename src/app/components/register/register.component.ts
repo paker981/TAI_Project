@@ -6,6 +6,8 @@ import { ToastrService } from 'ngx-toastr';
 import { ReactiveFormsModule } from '@angular/forms';
 import ValidateForm from 'src/app/helpers/validateform';
 import { AuthService } from 'src/app/services/auth.service';
+import { uzytkownik } from 'src/app/models/uzytkownik.model';
+
 
 
 
@@ -40,8 +42,10 @@ ngOnInit(): void {
     firma: ['',Validators.required],
     plec : ['',Validators.required],
     haslo: ['',Validators.required]
-  })
+  },
+  );
 }
+
 
   toogleFieldTextType() {
     this.fieldTextType= !this.fieldTextType;
@@ -59,8 +63,9 @@ ngOnInit(): void {
         this.router.navigate(['login']);
       },
       error:(err)=>{
-        this.toastr.error("Konto o takim adresie email juz istnieje!");
+        this.toastr.error(err);
       }
+      
     })
 
     }
@@ -69,6 +74,8 @@ ngOnInit(): void {
         this.toastr.error("Podaj dane rejestracji!");
       }
     }
+    
+
 
 }
 

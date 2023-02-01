@@ -1,0 +1,38 @@
+<header>
+    <div class="navbar navbar-dark bg-primary shadow-sm">
+        <div class="navbar-brand align-item-center d-flex"></div>
+        <i style="margin-right:px; font-size: 30px" class="fa regular fa-car-side" routerLink="/cars">
+                <strong>Car Rent</strong>
+        </i>
+        <div style="margin-right:500px;" class="form-group">
+            <input type="text" class="form-control" [(ngModel)]="searchTerm" (keyup)="search($event)" placeholder="Szukaj produkt">
+        </div>
+        <span class="fas fa-search search-icon"></span>
+
+        <button class="btn btn-primary">
+            <i style="font-size: 30px;" class="fa regular fa-basket-shopping" routerLink="cart"></i>
+            <div styles="font-size: 40px;" class="badge bg-danger">{{ilosc}}</div>
+        </button>
+        
+        
+            <ng-container *ngIf="userIsAutenticated">   
+                <button class="btn btn-primary"> 
+                    <i style="font-size: 30px;" class="fa solid fa-table-columns" routerLink="dashboard"></i>
+                </button> 
+                <button class="btn btn-primary"> 
+                    <i style="font-size: 30px;" class="fa regular fa-right-to-bracket" (click)="logOut()"></i>
+                </button> 
+            </ng-container>
+            <ng-container *ngIf="!userIsAutenticated">   
+                <button class="btn btn-primary"> 
+                <span routerLink="login">Logowanie</span>
+                </button>
+            </ng-container>
+    </div>
+</header>
+
+
+
+
+
+

@@ -1,32 +1,90 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container">
-    <a class="navbar-brand" href="#">Car Rent</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" 
-          routerLink="Pracownicy">Pracownicy</a>
-         </li> 
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" 
-            routerLink="Pracownicy/add">Dodaj Pracownika</a>
-        </li> 
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" 
-          routerLink="register">Rejestracja</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" 
-          routerLink="login">Logowanie</a>
-        </li>
 
-
-      </ul>
-    </div>
-  </div>
-</nav>
-
+<app-home></app-home>
 <router-outlet></router-outlet>
+
+<!-- Footer -->
+<footer class="text-center text-lg-start bg-light text-muted">
+  <!-- Section: Social media -->
+  
+  <!-- Section: Social media -->
+
+  <!-- Section: Links  -->
+  <section class="">
+    <div class="container text-center text-md-start mt-5">
+      <!-- Grid row -->
+      <div class="row mt-3">
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <!-- Content -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            <i class="fas fa-gem me-3"></i>Car Rent
+          </h6>
+          <p>
+            Profesjonalna obsługa, brak limitu km, promocje, dodatkowe usługi, ubezpieczenie w cenie. Możliwość wyjazdu za granicę, podstawienia auta pod dom i innych wyjątkowych usług.
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Samochody
+          </h6>
+          <p>
+            <a href="#!" class="text-reset">Sportowe</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Elektryczne</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Crossover</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Przydatne odnośniki
+          </h6>
+          <p>
+            <a href="#!" class="text-reset" routerLink="pays" >Metody płatności</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset" routerLink="q&a">F&A</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset" routerLink="contact">Znajdz nas</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">Kontakt</h6>
+          <p><i class="fas fa-home me-3"></i>​Połczyńska 10, 01-378 Warszawa</p>
+          <p>
+            <i class="fas fa-envelope me-3"></i>
+            carrent@gmail.com
+          </p>
+          <p><i class="fas fa-phone me-3"></i>+48-882-299-999</p>
+          <p><i class="fas fa-print me-3"></i>+ 1-​882-299-999</p>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+    </div>
+  </section>
+  <!-- Section: Links  -->
+
+  <!-- Copyright -->
+  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+    © 2023 Copyright:
+    <a class="text-reset fw-bold">CarRent</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->

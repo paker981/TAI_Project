@@ -1,0 +1,89 @@
+
+<button style ="margin-top: 20px; margin-right: 10 px;" routerLink="/dashboard" class="btn btn-success">Wróć do dashboardu</button>
+
+
+<div class="container my-5">
+    <h1 class="mb-3">Użytkownicy</h1>
+  <table class="table mt-3" *ngIf="uzytkownicy && uzytkownicy.length > 0" >
+       <thead>
+  <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Imie</th>
+      <th scope="col">Email</th>
+      <th scope="col">Numer</th>
+      <th scope="col">Firma</th>
+      <th scope="col">Płec</th>
+      <th scope="col">Rola</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+  </tr>
+  </thead>
+    <tbody>
+      <tr *ngFor="let uzytkownik of uzytkownicy">
+        <td>{{uzytkownik.id}}</td>
+        <td>{{uzytkownik.imie}}</td>
+        <td>{{uzytkownik.email}}</td>
+        <td>{{uzytkownik.numer}}</td>
+        <td>{{uzytkownik.firma}}</td>
+        <td>{{uzytkownik.plec}}</td>
+        <td>{{uzytkownik.role}}</td>
+
+        <ng-container *ngIf="uzytkownik.role != 'Admin'">
+        <td><button (click)="deleteUser(uzytkownik)" class="btn btn-danger">Usuń</button></td>
+        <td><button (click)="onEdit(uzytkownik)" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Edytuj</button></td>
+      </ng-container>
+      </tr>
+  
+    </tbody>
+  </table>
+    <p *ngIf="!uzytkownicy || uzytkownicy.length <= 0">Brak użytkowników!</p>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edytuj użytkownika</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+     <div class="modal-body">
+        <form [formGroup]="formValue">
+          <div class="mb-3">
+          <label for="" class="form-label"><b>ID</b></label>
+          <input type="text" class="form-control" formControlName="id" readonly="true" >
+           </div>
+          <div class="mb-3">
+              <label for="" class="form-label"><b>Imie</b></label>
+              <input type="text" class="form-control" formControlName="imie">
+            </div>
+          <div class="mb-3">
+              <label for="" class="form-label"><b>Email</b></label>
+              <input type="email" class="form-control" formControlName="email">
+            </div>
+          <div class="mb-3">
+              <label for="numer" class="form-label"><b>Numer</b></label>
+              <input type="number" class="form-control" formControlName="numer">
+            </div>
+          <div class="mb-3">
+             <label for="" class="form-label"><b>Firma</b></label>
+              <input type="text" class="form-control" formControlName="firma">
+            </div>
+              <div class="mb-3">
+                <label for="" class="form-label"><b>Uprawnienia</b></label>
+                <select class="form-control" formControlName="role">
+                  <option value="User">User</option>
+                  <option value="Admin">Admin</option>
+                </select>
+               </div>
+          </form>
+      <div class="modal-footer">
+        <button type="button" id="close" class="btn btn-secondary" data-bs-dismiss="modal">Zamknij</button>
+        <button (click)="updateUser()" type="button" class="btn btn-primary">Zapisz zmiany</button>
+      </div>
+    </div>
+  </div>
+</div>

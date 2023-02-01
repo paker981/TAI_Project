@@ -5,6 +5,8 @@ import { Observable } from 'rxjs/internal/Observable';
 import { uzytkownik } from '../models/uzytkownik.model';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt'
+import { TokenApiModel } from '../models/token-api.model';
+import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +15,8 @@ export class AuthService {
 
   baseApiUrl: string = environment.baseApiUrl;
   private userPayload: any;
+  public isAuthenticated: boolean = false;
+  public authStatusListener = new BehaviorSubject<any>([]);
   constructor(private http: HttpClient, private router: Router ) {
     this.userPayload = this.decodedToken();
    }
@@ -31,7 +35,29 @@ export class AuthService {
   storeToken(tokenValue : string){
     localStorage.setItem('token', tokenValue)
   }
+
+  storeRefreshToken(tokenValue : string){
+    localStorage.setItem('refreshToken', tokenValue)
+  }
+
+  setAuthorize(){
+    this.isAuthenticated = true;
+    this.authStatusListener.next(true);
+  }
+  getAuthorize(){
+    return this.authStatusListener;
+  }
+  signOut() {
+    localStorage.clear();
+    this.isAuthenticated = false;
+    this.authStatusListener.next(false);
+    //this.router.navigate(['login']);
+  }
   
+  getRefreshToken(){
+    return localStorage.getItem('refreshToken');
+  }
+
   getToken(){
     return localStorage.getItem('token');
   }
@@ -40,10 +66,7 @@ export class AuthService {
     return !!localStorage.getItem('token');
   }
 
-  signOut() {
-    localStorage.clear();
-    this.router.navigate(['login']);
-  }
+  
 
   decodedToken() {
     const jwtHelper = new JwtHelperService();
@@ -58,5 +81,15 @@ export class AuthService {
   getRoleFromToken() {
     if(this.userPayload)
     return this.userPayload.role;
+  }
+  getEmailFromToken() {
+      if(this.userPayload)
+      return this.userPayload.email;
+    }
+  
+
+  renewToken(tokenApi :TokenApiModel)
+  {
+    return this.http.post<TokenApiModel>(this.baseApiUrl + '/api/User/refresh', tokenApi)
   }
 }
