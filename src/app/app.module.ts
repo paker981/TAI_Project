@@ -3,11 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PracownicyListaComponent } from './components/Pracownicy/pracownicy-lista/pracownicy-lista.component';
-import { AddPracownikComponent } from './components/Pracownicy/add-pracownik/add-pracownik.component';
 import { FormsModule } from '@angular/forms';
-import { EditPracownikComponent } from './components/Pracownicy/edit-pracownik/edit-pracownik.component';
-import { DeletePracownikComponent } from './components/Pracownicy/delete-pracownik/delete-pracownik.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -26,16 +22,13 @@ import { EditCarsComponent } from './components/Dashboard-comp/edit-cars/edit-ca
 import { QaComponent } from './components/qa/qa.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { PaysComponent } from './components/pays/pays.component';
+import { ResetpasswordComponent } from './components/resetpassword/resetpassword.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PracownicyListaComponent,
-    AddPracownikComponent,
-    EditPracownikComponent,
-    DeletePracownikComponent,
     RegisterComponent,
     LoginComponent,
     DashboardComponent,
@@ -49,7 +42,8 @@ import { PaysComponent } from './components/pays/pays.component';
     EditCarsComponent,
     QaComponent,
     ContactComponent,
-    PaysComponent
+    PaysComponent,
+    ResetpasswordComponent
   ],
   imports: [
     BrowserModule,

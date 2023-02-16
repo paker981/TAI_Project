@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import ValidateForm from 'src/app/helpers/validateform';
 import { AuthService } from 'src/app/services/auth.service';
+import { ResetPasswordService } from 'src/app/services/reset-password.service';
 import { UserStoreService } from 'src/app/services/user-store.service';
 
 @Component({
@@ -19,9 +20,12 @@ export class LoginComponent {
   type: string = "password"
   eyeIcon: string = "fa-eye-slash";
   loginForm!: FormGroup;
+  public resetPasswordEmail!: string;
+  public isValidEmail!: boolean;
+
   
   
-  constructor(private route: ActivatedRoute,private _location : Location,private toastr: ToastrService, private fb: FormBuilder, private auth: AuthService, private router: Router, private userStore: UserStoreService) { }
+  constructor(private route: ActivatedRoute,private _location : Location,private toastr: ToastrService, private fb: FormBuilder, private auth: AuthService, private router: Router, private userStore: UserStoreService, private resetService: ResetPasswordService ) { }
 
   ngOnInit() :void {
     this.loginForm = this.fb.group({
@@ -56,7 +60,7 @@ export class LoginComponent {
           
         },
         error:(err)=>{
-          this.toastr.error("Hasło jest nieprawidłowe!");
+          this.toastr.error("Login lub hasło jest nieprawidłowe!");
         }
       })
       
@@ -64,6 +68,39 @@ export class LoginComponent {
       else{
         ValidateForm.validateAllFormFields(this.loginForm);
         this.toastr.error('Podaj dane logowania!');
+      }
+    }
+
+    checkValidEmail(event: string){
+      const val = event;
+      const pattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+
+      this.isValidEmail = pattern.test(val);
+      return this.isValidEmail;
+    }
+
+    confirmToSend(){
+      if(this.checkValidEmail(this.resetPasswordEmail)){
+        console.log(this.resetPasswordEmail);
+        
+
+        this.resetService.sendResetPasswordLink(this.resetPasswordEmail)
+        .subscribe({
+          next:(res)=>{
+            this.toastr.success("Wysłano email z linkiem resetującym!");
+            this.resetPasswordEmail="";
+            const buttonRef = document.getElementById("close");
+            buttonRef?.click();
+        },
+        error:(err)=>{
+          this.toastr.error("Cos nie tak!")
+        }
+        
+      })
+
+      }
+      else{
+        this.toastr.error("Wprowadź email!");
       }
     }
     

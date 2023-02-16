@@ -11,13 +11,11 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { PayComponent } from './components/pay/pay.component';
 import { PaysComponent } from './components/pays/pays.component';
-import { AddPracownikComponent } from './components/Pracownicy/add-pracownik/add-pracownik.component';
-import { DeletePracownikComponent } from './components/Pracownicy/delete-pracownik/delete-pracownik.component';
-import { EditPracownikComponent } from './components/Pracownicy/edit-pracownik/edit-pracownik.component';
-import { PracownicyListaComponent } from './components/Pracownicy/pracownicy-lista/pracownicy-lista.component';
 import { QaComponent } from './components/qa/qa.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ResetpasswordComponent } from './components/resetpassword/resetpassword.component';
 import { AuthGuard } from './Guard/auth.guard';
+import { ResetPassword } from './models/reset-password.model';
 
 const routes: Routes = [
 
@@ -27,24 +25,6 @@ const routes: Routes = [
 
   {path:'cart', component: CartComponent},
 
-
-{
-  path: 'Pracownicy',
-  component: PracownicyListaComponent
-},
-
-{
-path: 'Pracownicy/add',
-  component: AddPracownikComponent
-},
-{
-  path: 'Pracownicy/edit/:id',
-    component: EditPracownikComponent
-},
-{
-  path: 'Pracownicy/delete/:id',
-  component: DeletePracownikComponent
-},
 {
   path: 'register',
   component: RegisterComponent
@@ -84,6 +64,10 @@ path: 'Pracownicy/add',
 {
   path: 'pays',
   component: PaysComponent
+},
+{
+  path: 'reset',
+  component: ResetpasswordComponent
 }
 
 
