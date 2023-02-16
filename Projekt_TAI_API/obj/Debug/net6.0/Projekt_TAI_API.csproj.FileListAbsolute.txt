@@ -288,3 +288,7 @@ C:\Users\micha\Desktop\SEMESTR 7\TAI\Projekt_TAI_API\Projekt_TAI_API\Projekt_TAI
 C:\Users\micha\Desktop\SEMESTR 7\TAI\Projekt_TAI_API\Projekt_TAI_API\Projekt_TAI_API\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\Users\micha\Desktop\SEMESTR 7\TAI\Projekt_TAI_API\Projekt_TAI_API\Projekt_TAI_API\obj\Debug\net6.0\Projekt_TAI_API.RazorAssemblyInfo.cache
 C:\Users\micha\Desktop\SEMESTR 7\TAI\Projekt_TAI_API\Projekt_TAI_API\Projekt_TAI_API\obj\Debug\net6.0\Projekt_TAI_API.RazorAssemblyInfo.cs
+C:\Users\micha\Desktop\SEMESTR 7\TAI\Projekt_TAI_API\Projekt_TAI_API\Projekt_TAI_API\bin\Debug\net6.0\MailKit.dll
+C:\Users\micha\Desktop\SEMESTR 7\TAI\Projekt_TAI_API\Projekt_TAI_API\Projekt_TAI_API\bin\Debug\net6.0\MimeKit.dll
+C:\Users\micha\Desktop\SEMESTR 7\TAI\Projekt_TAI_API\Projekt_TAI_API\Projekt_TAI_API\bin\Debug\net6.0\NETCore.MailKit.dll
+C:\Users\micha\Desktop\SEMESTR 7\TAI\Projekt_TAI_API\Projekt_TAI_API\Projekt_TAI_API\bin\Debug\net6.0\BouncyCastle.Crypto.dll

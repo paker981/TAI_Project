@@ -3,7 +3,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+
+
 using Projekt_TAI_API.Data;
+using Projekt_TAI_API.UtilityService;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -29,6 +32,7 @@ builder.Services.AddDbContext<FullStackDbContext>(options =>
 options.UseNpgsql(builder.Configuration.GetConnectionString("FullStackConnectionString"))
 );
 
+builder.Services.AddScoped<IEmailService, EmailService >();
 
 builder.Services.AddAuthentication(x =>
 {

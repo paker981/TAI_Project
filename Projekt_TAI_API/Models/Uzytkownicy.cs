@@ -24,5 +24,9 @@
 
             public DateTime refreshTokenExpiryTime { get; set; }
 
+            public string? resetPasswordToken { get; set; }
+
+            public DateTime resetPasswordExpiry { get; set; }
+
     }
 }
