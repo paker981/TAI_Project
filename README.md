@@ -3,7 +3,7 @@ Car Rent,   tech stack: Angular 15 + .NET 6 WEB API + PostgreSQL
 
 First fullstack project done for a passing grade in the Web Application Technologies course. From that moment I started to be strongly interested mainly in front-end environment.
 This was my first contact with techonologies: Angular, .NET and database ultimately PostgreSQL, earlier MS-SQL. I worked on the project for about 4 weeks, having a little experience,
-hence the project could have been better refined in some places. It took me about 2 weeks to implement the project.
+hence the project could have been better refined in some places. 
 ## Of the more interesting solutions used in the project:
 #### JWT implementation and full implementation of password hashing and password strength checking from the API.
 #### Support for payment gateway using Paypal Sandbox, and sending conact email using email gateway.
