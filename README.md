@@ -3,13 +3,13 @@ Car Rent,   tech stack: Angular 15 + .NET 6 WEB API + PostgreSQL
 
 First fullstack project done for a passing grade in the Web Application Technologies course. From that moment I started to be strongly interested mainly in front-end environment.
 This was my first contact with techonologies: Angular, .NET and database ultimately PostgreSQL, earlier MS-SQL. I worked on the project for about 4 weeks, having a little experience,
-hence the project could have been better refined in some places. 
-Of the more interesting solutions used in the project:
-JWT implementation and full implementation of password hashing and password strength checking from the API.
-Support for payment gateway using Paypal Sandbox, and sending conact email using email gateway.
-Map support with google maps, in order to determine your point on the map, i.e. where to look for our company.
-Support for shopping cart and full implementation of changing the value after adding to the cart and maniupulation of the number of cars.
-In future updates, I added implementations of the forgot password mechanism with send message on email by google SMTP
+hence the project could have been better refined in some places. It took me about 2 weeks to implement the project.
+## Of the more interesting solutions used in the project:
+#### JWT implementation and full implementation of password hashing and password strength checking from the API.
+#### Support for payment gateway using Paypal Sandbox, and sending conact email using email gateway.
+#### Map support with google maps, in order to determine your point on the map, i.e. where to look for our company.
+#### Support for shopping cart and full implementation of changing the value after adding to the cart and maniupulation of the number of cars.
+#### In future updates, I added implementations of the forgot password mechanism with send message on email by google SMTP
 
 UI presentation: 
 ![image](https://github.com/paker981/TAI_Project/assets/119948469/aba64348-bcd0-412b-aaec-ba328fac0529)
