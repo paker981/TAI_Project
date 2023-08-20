@@ -11,7 +11,7 @@ hence the project could have been better refined in some places.
 #### Support for shopping cart and full implementation of changing the value after adding to the cart and maniupulation of the number of cars.
 #### In future updates, I added implementations of the forgot password mechanism with send message on email by google SMTP
 
-UI presentation: 
+### UI presentation: 
 ![image](https://github.com/paker981/TAI_Project/assets/119948469/aba64348-bcd0-412b-aaec-ba328fac0529)
 ![image](https://github.com/paker981/TAI_Project/assets/119948469/29836748-7a80-4e98-b3e5-9e0a133fb2f0)
 ![image](https://github.com/paker981/TAI_Project/assets/119948469/4a7f35ba-ee8d-4cfa-a4d0-928e988b971f)
@@ -26,14 +26,12 @@ UI presentation:
 ![image](https://github.com/paker981/TAI_Project/assets/119948469/13c35e89-37b5-48f5-8b95-cba2f0e505e3)
 ![image](https://github.com/paker981/TAI_Project/assets/119948469/85b11bad-dd26-4e0a-a13a-7ba37bd420ec)
 
-Admin panel: 
+### Admin panel: 
 ![image](https://github.com/paker981/TAI_Project/assets/119948469/013a25b4-258b-4a79-b28c-f5e3a94ebaf4)
 ![image](https://github.com/paker981/TAI_Project/assets/119948469/8cba0896-1359-484a-96ce-6c059d84623c)
 ![image](https://github.com/paker981/TAI_Project/assets/119948469/a572f995-df9f-498e-a7a7-f59ca5ac7a2e)
 
 
-
-
-Swagger: 
+### Swagger: 
 ![image](https://github.com/paker981/TAI_Project/assets/119948469/c529f51b-cb9b-4b03-81b9-b0f61eb4c054)
 ![image](https://github.com/paker981/TAI_Project/assets/119948469/a79cd2a8-d0e5-4cb5-b7e4-209a5e893374)
